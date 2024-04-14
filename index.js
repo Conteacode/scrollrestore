@@ -59,6 +59,7 @@ collapseAll = function() {
     }
 }
 saveScrollPosition = function() {
+    console.log(window.scrollY)
     window.localStorage.setItem('scrollPosition', window.scrollY);
 }
 loadScrollPosition = function() {
