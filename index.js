@@ -65,6 +65,7 @@ saveScrollPosition = function() {
 }
 loadScrollPosition = function() {
     let scrollPosition = window.localStorage.getItem('scrollPosition');
+    console.log("loadScrollPosition:" + scrollPosition)
     if (scrollPosition) {
         window.scrollTo(0, scrollPosition);
     }
