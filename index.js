@@ -6,6 +6,7 @@ let accordion = null;
 document.addEventListener('DOMContentLoaded', function () {
     init(); // Initialize the accordion
     loadStateFromLocalStorage();
+    loadScrollPosition();
 }, false);
 
 init = function() {
