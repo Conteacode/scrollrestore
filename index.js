@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 init = function() {
+
     accordion = document.getElementById('accordion');
     overlay = document.getElementById('overlay');
     btn = document.getElementById('btn');
@@ -23,7 +24,6 @@ init = function() {
         });
     }
 }
-
 loadStateFromLocalStorage = function() {
     console.log("loadStateFromLocalStorage");
     let accordionState = window.localStorage.getItem('accordion');
@@ -41,21 +41,19 @@ loadStateFromLocalStorage = function() {
 }
 
 calculate = function() {
-    console.log("Calculate");
     overlay.classList.add('active');
     setTimeout(function() {
+        saveAccordionState();
+        saveScrollPosition();
+        location.reload();
+        loadStateFromLocalStorage();
+        loadScrollPosition();
         overlay.classList.remove('active');    
-    }, 3000);
-    saveAccordionState();
-    saveScrollPosition();
-    location.reload();
-    loadStateFromLocalStorage();
-    loadScrollPosition();
+    }, 1000);
 
 }
 
 collapseAll = function() {
-    console.log("collapseAll");
     for (let item of accordionelements) {
         item.classList.remove('open');
     }
@@ -71,7 +69,6 @@ loadScrollPosition = function() {
 }
 
 saveAccordionState = function() {
-
     let accordionState = [];
     for (let item of accordionelements) {
         let accordionId = item.id;
@@ -81,3 +78,7 @@ saveAccordionState = function() {
     window.localStorage.setItem('accordion', JSON.stringify(accordionState));
 }
  
+resetAll = function() {
+    window.localStorage.clear();
+    location.reload();
+}
